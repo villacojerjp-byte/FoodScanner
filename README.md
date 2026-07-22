@@ -5,7 +5,13 @@ A holistic food & cosmetic barcode scanner, in the mould of
 Scan a barcode, get a 0–100 score, see exactly which ingredients cost it points, and get a
 cleaner swap from the same aisle.
 
-Built with **Expo (SDK 57) + React Native + expo-router**, shipped with **EAS Build/Submit/Update**.
+Built with **Expo (SDK 54) + React Native 0.81 + expo-router**, shipped with **EAS Build/Submit/Update**.
+
+> **Why SDK 54?** Expo Go on the iOS App Store is stuck at 54.0.2 while Apple's review queue
+> clears ([Expo, May 2026](https://expo.dev/changelog/expo-go-and-app-store-may-2026)). Newer
+> SDKs need `eas go` or a development build, both requiring a paid Apple Developer account.
+> SDK 54 is the last version that runs on a physical iPhone for free. The SDK 57 build is
+> preserved at the `sdk-57` git tag.
 
 ## Why the data comes from Open Food Facts
 
@@ -67,7 +73,14 @@ npm start          # then press a / i, or scan the QR with Expo Go
 npm run web        # fastest way to look at the UI
 ```
 
-The camera needs a development build or a real device; everything else works in Expo Go and on web.
+**On an iPhone:** install Expo Go from the App Store, put the phone on the same Wi-Fi, then scan
+the QR with the **Camera app** (iOS has no in-app scanner) or enter `exp://<your-lan-ip>:8081`
+manually in Expo Go. Barcode scanning works properly on a real device.
+
+**On Android:** `npm run android` sideloads the matching Expo Go build automatically.
+
+Emulators have no real camera, so the scanner falls back to its manual barcode-entry field —
+try `3017620422003` (Nutella) or `8001090662231` (a shampoo, exercising the cosmetics path).
 
 ```bash
 npm run typecheck  # tsc --noEmit

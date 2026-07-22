@@ -1,7 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 import * as Haptics from 'expo-haptics';
-import { useRouter } from 'expo-router';
-import Tabs, { type BottomTabBarProps } from 'expo-router/js-tabs';
+import { Tabs, useRouter } from 'expo-router';
 import React from 'react';
 import { Platform, Pressable, StyleSheet, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -23,7 +23,7 @@ const ICONS: Record<string, { on: keyof typeof Ionicons.glyphMap; off: keyof typ
 function TabBar({ state, navigation }: BottomTabBarProps) {
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const routes = state.routes.filter((r: { name: string }) => r.name in ICONS);
+  const routes = state.routes.filter((r) => r.name in ICONS);
   const left = routes.slice(0, 2);
   const right = routes.slice(2);
 
