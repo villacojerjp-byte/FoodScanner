@@ -39,3 +39,6 @@ yarn-error.*
 # generated native folders
 /ios
 /android
+
+# EAS submit credentials (Play service account, App Store keys)
+/credentials
